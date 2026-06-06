@@ -1,0 +1,49 @@
+<div class="container py-3">
+
+  <header class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+    <h4 class="text-danger fw-bold m-0">🍔 FomeDeGue</h4>
+    <div>
+      <button class="btn btn-light me-2 rounded-circle">🛒</button>
+      <button class="btn btn-light rounded-circle">👤</button>
+    </div>
+  </header>
+
+  <input type="text" class="form-control mb-4 rounded-pill bg-light p-3" placeholder="🔍 Buscar em FomeDeGue...">
+
+  <div class="d-flex gap-2 mb-4 overflow-auto">
+    @for (cat of categorias; track cat.id) {
+      <button class="btn rounded-pill px-4"
+              [class.btn-danger]="cat.ativo"
+              [class.btn-light]="!cat.ativo">
+        {{ cat.icone }} {{ cat.nome }}
+      </button>
+    }
+  </div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-3">
+    @for (produto of produtos; track produto.id) {
+      <div class="col">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+          <img [src]="produto.imagem" class="card-img-top" style="height: 160px; object-fit: cover;">
+
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <h6 class="fw-bold m-0">{{ produto.nome }}</h6>
+              <span class="badge bg-light text-dark shadow-sm">⭐ {{ produto.avaliacao }}</span>
+            </div>
+
+            <p class="text-muted small mb-3">{{ produto.descricao }}</p>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-danger fw-bold">{{ produto.preco }}</span>
+              <button class="btn btn-danger btn-sm rounded-circle fw-bold">+</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    }
+  </div>
+
+</div>
